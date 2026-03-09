@@ -72,6 +72,22 @@
       max-width: 860px;
     }
 
+    /* 标题行：LEAD 文字在左，lead-title 图片在右 */
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .hero-title-row .title-logo {
+      height: clamp(48px, 5.5vw, 68px);
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
     .hero h1 {
       margin: 0;
       font-size: clamp(52px, 6vw, 74px);
@@ -403,7 +419,10 @@
     <div class="container">
       <section class="hero">
         <div class="hero-copy">
-          <h1>LEAD</h1>
+          <div class="hero-title-row">
+            <h1>LEAD</h1>
+            <img class="title-logo" src="lead-title.png" alt="LEAD" />
+          </div>
           <h2>Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding</h2>
           <p class="hero-desc">
             LEAD is a plug-and-play decoding strategy for multimodal reasoning models. When the model enters high-entropy, uncertain reasoning stages, it preserves latent semantic competition in the token distribution; when entropy decreases, it switches back to discrete decoding for stable convergence, while visual anchors pull the reasoning process back toward image-grounded evidence.
