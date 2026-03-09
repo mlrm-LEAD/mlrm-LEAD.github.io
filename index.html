@@ -72,20 +72,48 @@
       max-width: 860px;
     }
 
-    /* 标题行：LEAD 文字在左，lead-title 图片在右 */
+    /* 标题行：LEAD 文字 + logo 图标水平对齐 */
     .hero-title-row {
       display: flex;
       align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
+      gap: clamp(16px, 2.2vw, 32px);
+      flex-wrap: nowrap;
       margin-bottom: 0;
     }
 
-    .hero-title-row .title-logo {
-      height: clamp(48px, 5.5vw, 68px);
-      width: auto;
-      object-fit: contain;
+    .title-logo-wrap {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(68px, 7.5vw, 100px);
+      height: clamp(68px, 7.5vw, 100px);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 22px;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      padding: 4px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .title-logo-wrap:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow:
+        0 8px 28px rgba(245, 177, 124, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    .title-logo-wrap .title-logo {
+      width: 180%;
+      height: 180%;
+      max-width: none;
+      object-fit: contain;
+      transform: translateY(-4%);
     }
 
     .hero h1 {
@@ -368,6 +396,13 @@
         padding-bottom: 34px;
       }
 
+      .title-logo-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        padding: 8px;
+      }
+
       .feature-item {
         grid-template-columns: 34px 1fr;
         font-size: 16px;
@@ -421,7 +456,9 @@
         <div class="hero-copy">
           <div class="hero-title-row">
             <h1>LEAD</h1>
-            <img class="title-logo" src="lead-title.png" alt="LEAD" />
+            <div class="title-logo-wrap">
+              <img class="title-logo" src="lead-title.png" alt="LEAD logo" />
+            </div>
           </div>
           <h2>Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding</h2>
           <p class="hero-desc">
