@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
   <style>
+    /* 标题旁 logo：调整白色块/图案大小见 .hero-title-row 下的 --title-logo-size / --title-logo-padding / --title-logo-image-scale */
     :root {
       --bg-dark: #040814;
       --bg-mid: #0f1f6b;
@@ -72,8 +73,12 @@
       max-width: 860px;
     }
 
-    /* 标题行：LEAD 文字 + logo 图标水平对齐 */
+    /* 标题行：LEAD 文字 + logo，相对 LEAD 横轴中心对称 */
     .hero-title-row {
+      --title-logo-size: clamp(84px, 9.5vw, 128px);  /* 调大这里的数值 → 整块（白色块+logo）会变大 */
+      --title-logo-padding: 0;                         /* 0 = logo 与白色块同大，无留白 */
+      --title-logo-image-scale: 1;
+      --title-logo-vertical-offset: 10%;                /* 下移量：与 LEAD 横轴中心对称，偏上就加大（如 8%） */
       display: flex;
       align-items: center;
       gap: clamp(16px, 2.2vw, 32px);
@@ -81,36 +86,42 @@
       margin-bottom: 0;
     }
 
+    /* 白色块：与 logo 同比例（611:378），避免裁切；下移以对齐 LEAD 视觉中心 */
     .title-logo-wrap {
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: clamp(68px, 7.5vw, 100px);
-      height: clamp(68px, 7.5vw, 100px);
+      width: var(--title-logo-size);
+      height: auto;
+      aspect-ratio: 611 / 378;
+      padding: var(--title-logo-padding);
+      transform: translateY(var(--title-logo-vertical-offset));
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-radius: 22px;
+      border-radius: 18px;
       border: 1.5px solid rgba(255, 255, 255, 0.3);
       box-shadow:
         0 4px 20px rgba(0, 0, 0, 0.22),
         0 0 0 1px rgba(255, 255, 255, 0.1);
-      padding: 6px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .title-logo-wrap:hover {
-      transform: translateY(-2px) scale(1.04);
+      transform: translateY(var(--title-logo-vertical-offset)) translateY(-2px) scale(1.04);
       box-shadow:
         0 8px 28px rgba(245, 177, 124, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.18);
     }
 
+    /* 图案（logo 图片）：与白色块同比例铺满，不裁切 */
     .title-logo-wrap .title-logo {
       width: 100%;
       height: 100%;
+      min-width: 0;
+      min-height: 0;
       object-fit: contain;
     }
 
@@ -395,10 +406,11 @@
       }
 
       .title-logo-wrap {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        padding: 8px;
+        width: 73px;   /* 小屏下 logo 宽度，想更大可改为 72 等 */
+        height: auto;
+        aspect-ratio: 611 / 378;
+        border-radius: 12px;
+        padding: 0;
       }
 
       .feature-item {
