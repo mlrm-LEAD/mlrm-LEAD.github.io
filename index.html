@@ -53,11 +53,31 @@
       width: min(calc(100% - 40px), 1440px);
     }
 
+    /* 开头 hero 区：浅天蓝/婴儿蓝背景（与截图相近的淡蓝） */
     .hero-wrap {
-      background:
-        radial-gradient(circle at 50% 60%, rgba(42, 63, 162, 0.45), transparent 34%),
-        linear-gradient(90deg, #000207 0%, #000610 18%, #07165a 48%, #182d82 62%, #72678c 82%, #c98f68 100%);
-      color: var(--text);
+      background: linear-gradient(165deg, #e8f4fc 0%, #dceefc 45%, #d0e8f8 100%);
+      color: #1e293b;
+    }
+
+    .hero-wrap .hero h1,
+    .hero-wrap .hero h2 {
+      color: #b45309;
+    }
+
+    .hero-wrap .hero-desc {
+      color: #334155;
+    }
+
+    .hero-wrap .feature-item {
+      color: #475569;
+    }
+
+    .hero-wrap .feature-item strong {
+      color: #0f172a;
+    }
+
+    .hero-wrap .feature-icon {
+      color: #0c4a6e;
     }
 
     .hero {
