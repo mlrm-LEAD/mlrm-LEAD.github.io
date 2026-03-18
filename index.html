@@ -7,7 +7,7 @@
   <meta name="description" content="LEAD: Latent Entropy-Aware Decoding for reliable multimodal reasoning and hallucination mitigation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
   <style>
@@ -53,44 +53,44 @@
       width: min(calc(100% - 40px), 1440px);
     }
 
-    /* 开头 hero 区：浅天蓝/婴儿蓝背景（与截图相近的淡蓝） */
+    /* Hero background adapted from the pySpatial-style diagonal gradient. */
     .hero-wrap {
-      background: linear-gradient(165deg, #e8f4fc 0%, #dceefc 45%, #d0e8f8 100%);
-      color: #1e293b;
+      background: linear-gradient(-235deg, #2c498b 45%, #75abe7 60%, #F7E7DA 75%, #ffb265 100%);
+      color: #fff7d4;
     }
 
     .hero-wrap .hero h1,
     .hero-wrap .hero h2 {
-      color: #f5a84a;
+      color: #feae6f;
     }
 
     .hero-wrap .hero-desc {
-      color: #334155;
+      color: #fff7d4;
     }
 
     .hero-wrap .feature-item {
-      color: #475569;
+      color: rgba(255, 247, 212, 0.88);
     }
 
     .hero-wrap .feature-item strong {
-      color: #0f172a;
+      color: #ffe099;
     }
 
     .hero-wrap .feature-icon {
-      color: #0c4a6e;
+      color: #feae6f;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(420px, 0.82fr);
+      grid-template-columns: minmax(0, 1.24fr) minmax(420px, 0.76fr);
       gap: 34px;
       align-items: center;
-      padding: 42px 0 56px;
-      min-height: 740px;
+      padding: 28px 0 34px;
+      min-height: 620px;
     }
 
     .hero-copy {
-      max-width: 860px;
+      max-width: 980px;
     }
 
     /* 标题行：LEAD 文字 + logo，相对 LEAD 横轴中心对称 */
@@ -168,7 +168,7 @@
       font-size: clamp(16px, 1.15vw, 19px);
       color: var(--text);
       margin: 0 0 24px;
-      max-width: 780px;
+      max-width: 940px;
     }
 
     .byline-wrap {
@@ -274,20 +274,41 @@
 
     .hero-visual {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-end;
       align-items: center;
+      gap: 14px;
+      position: relative;
     }
 
     .hero-visual img {
-      width: min(100%, 980px);
-      border-radius: 0;
+      width: min(100%, 1220px);
+      border-radius: 24px;
       box-shadow: none;
       object-fit: cover;
       transition: transform 0.35s ease;
+      transform: translateX(20px);
     }
 
     .hero-visual img:hover {
-      transform: scale(1.03);
+      transform: translateX(20px) scale(1.03);
+    }
+
+    .hero-slogan {
+      width: 100%;
+      max-width: 640px;
+      margin: 10px 0 0;
+      color: rgba(108, 116, 130, 0.98);
+      font-family: "Great Vibes", "Times New Roman", cursive;
+      font-size: clamp(18px, 1.45vw, 28px);
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      text-align: center;
+      text-wrap: balance;
+      transform: translate(20px, 8px);
+      text-shadow: 0 2px 8px rgba(18, 33, 83, 0.24);
     }
 
     .section {
@@ -381,13 +402,15 @@
     .bibtex {
       margin-top: 18px;
       padding: 18px;
-      border-radius: 18px;
-      background: #101827;
-      color: #eef2ff;
+      border-radius: 14px;
+      background: #f3f4f6;
+      color: #1f2937;
+      border: 1px solid rgba(15, 23, 42, 0.12);
       overflow: auto;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 14px;
       line-height: 1.55;
+      white-space: pre-wrap;
     }
 
     .footer {
@@ -502,7 +525,7 @@
           </div>
           <h2>Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding</h2>
           <p class="hero-desc">
-            LEAD is a plug-and-play decoding strategy for multimodal reasoning models. When the model enters high-entropy, uncertain reasoning stages, it preserves latent semantic competition in the token distribution; when entropy decreases, it switches back to discrete decoding for stable convergence, while visual anchors pull the reasoning process back toward image-grounded evidence.
+            We introduce LEAD, a plug-and-play decoding strategy that stabilizes multimodal reasoning by preserving semantic competition under uncertainty and re-grounding reasoning with visual anchors.
           </p>
 
           <div class="feature-list">
@@ -525,15 +548,16 @@
           </div>
 
           <div class="btn-row">
-            <a class="btn" href="javascript:void(0)"><i class="fas fa-file-lines"></i>Paper</a>
-            <a class="btn" href="javascript:void(0)"><i class="ai ai-arxiv"></i>arXiv</a>
+            <a class="btn" href="https://arxiv.org/pdf/2603.13366"><i class="fas fa-file-lines"></i>Paper</a>
+            <a class="btn" href="https://arxiv.org/abs/2603.13366"><i class="ai ai-arxiv"></i>arXiv</a>
             <a class="btn" href="https://github.com/mlrm-LEAD/mlrm-LEAD"><i class="fab fa-github"></i>Code</a>
             <a class="btn" href="#references"><i class="fas fa-link"></i>BibTeX</a>
           </div>
         </div>
 
         <div class="hero-visual">
-          <img src="55555.png" alt="Illustration of LEAD-style multimodal reasoning with a robot, book, and reasoning steps" />
+          <img src="lead_logo.png" alt="LEAD logo" />
+          <p class="hero-slogan">"It points to the thing you want most in this world."</p>
         </div>
       </section>
     </div>
@@ -658,11 +682,11 @@
       <div class="container">
         <div class="section-inner">
           <h3>References</h3>
-          <div class="bibtex">@article{lead2026,
-  title={Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding},
-  author={Anonymous},
-  journal={CVPR 2026 Submission},
-  year={2026}
+          <div class="bibtex">@inproceedings{xu2026thinking,
+  title     = {Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding},
+  author    = {Zhongxing, Xu and Zhonghua, Wang and Zhe, Qian and Dachuan, Shi and Feilong, Tang and Ming, Hu and Shiyan, Su and Xiaocheng, Zou and Wei, Feng and Dwarikanath, Mahapatra and Yifan, Peng and Mingquan, Lin and Zongyuan, Ge},
+  booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference},
+  year      = {2026}
 }</div>
         </div>
       </div>
@@ -670,7 +694,10 @@
   </main>
 
   <footer class="footer">
-    <div class="container">Project page for LEAD: Latent Entropy-Aware Decoding for Reliable Multimodal Reasoning.</div>
+    <div class="container">
+      <div>Project page for LEAD: Latent Entropy-Aware Decoding for Reliable Multimodal Reasoning.</div>
+      <div>* Project page logo generated by Nano Banana 2.</div>
+    </div>
   </footer>
 </body>
 </html>
